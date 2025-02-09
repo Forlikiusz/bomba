@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktywne Tabele</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        td {
+            border: 1px solid black;
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+        .red { background-color: red; color: white; }
+        .blue { background-color: blue; color: white; }
+        .black { background-color: black; color: white; }
+    </style>
+</head>
+<body>
+    <table id="table1">
+        <tbody>
+            <tr><td>Czerwony</td></tr>
+            <tr><td>C</td></tr>
+            <tr><td>B</td></tr>
+            <tr><td>A</td></tr>
+            <tr><td>A C</td></tr>
+            <tr><td>B</td></tr>
+            <tr><td>A C</td></tr>
+            <tr><td>A B C</td></tr>
+            <tr><td>A B</td></tr>
+            <tr><td>B</td></tr>
+        </tbody>
+    </table>
+    <table id="table2">
+        <tbody>
+            <tr><td>Niebieski</td></tr>
+            <tr><td>B</td></tr>
+            <tr><td>A C</td></tr>
+            <tr><td>B</td></tr>
+            <tr><td>A</td></tr>
+            <tr><td>B</td></tr>
+            <tr><td>B C</td></tr>
+            <tr><td>C</td></tr>
+            <tr><td>A C</td></tr>
+            <tr><td>A</td></tr>
+        </tbody>
+    </table>
+    <table id="table3">
+        <tbody>
+            <tr><td>Czarny</td></tr>
+            <tr><td>A B C</td></tr>
+            <tr><td>A C</td></tr>
+            <tr><td>B</td></tr>
+            <tr><td>A C</td></tr>
+            <tr><td>B</td></tr>
+            <tr><td>B C</td></tr>
+            <tr><td>A B</td></tr>
+            <tr><td>C</td></tr>
+            <tr><td>C</td></tr>
+        </tbody>
+    </table>
+    <script>
+        function addClickEvent(tableId, colorClass) {
+            document.querySelectorAll(`#${tableId} td`).forEach(cell => {
+                cell.addEventListener('click', function() {
+                    if (this.classList.contains(colorClass)) {
+                        this.classList.remove(colorClass);
+                    } else {
+                        this.className = colorClass;
+                    }
+                });
+            });
+        }
+        addClickEvent("table1", "red");
+        addClickEvent("table2", "blue");
+        addClickEvent("table3", "black");
+    </script>
+</body>
+</html>
